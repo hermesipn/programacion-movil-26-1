@@ -1,4 +1,4 @@
-package mx.ipn.upiicsa.programacionmovil.citas.entity
+package mx.ipn.upiicsa.programacionmovil.citas.entity.controlacceso
 
 import java.time.LocalDate
 

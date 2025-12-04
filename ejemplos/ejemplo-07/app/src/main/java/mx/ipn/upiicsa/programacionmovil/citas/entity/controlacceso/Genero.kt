@@ -1,4 +1,4 @@
-package mx.ipn.upiicsa.programacionmovil.citas.entity
+package mx.ipn.upiicsa.programacionmovil.citas.entity.controlacceso
 
 class Genero (var id: Int , var nombre: String){
     var descripcion: String = ""

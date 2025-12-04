@@ -1,4 +1,4 @@
-package mx.ipn.upiicsa.programacionmovil.citas.entity
+package mx.ipn.upiicsa.programacionmovil.citas.entity.controlacceso
 
 class Rol {
     var id: Int ?= null

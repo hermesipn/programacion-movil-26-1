@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Citas</string>
+    <string name="inicio_de_sesion">Iniciar de sesión</string>
+    <string name="login">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="rigistrarse">¿No tienes cuenta? Regístrate</string>
 </resources>
