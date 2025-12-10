@@ -1,5 +1,7 @@
 package mx.ipn.upiicsa.programacionmovil.citas.screens
 
+import android.util.Base64
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -42,6 +44,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import mx.ipn.upiicsa.programacionmovil.citas.R
+import java.nio.charset.StandardCharsets
+import java.security.MessageDigest
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -154,7 +158,7 @@ fun LoginScreen(
                                 kotlinx.coroutines.delay(1000)
 
                                 // Validación simple (reemplaza con tu lógica real)
-                                if (username == "admin" && password == "admin123") {
+                                if (username == "admin" && base64(sha512(password)) == "N2ZjZjRiYTM5MWM0ODc4NGVkZGU1OTk4ODlkNmUzZjFlNDdhMjdkYjM2ZWNjMDUwY2M5MmYyNTliZmFjMzhhZmFkMmM2OGExYWU4MDRkNzcwNzVlOGZiNzIyNTAzZjNlY2EyYjJjMTAwNmVlNmY2YzdiNzYyOGNiNDVmZmZkMWQ=") {
                                     onLoginSuccess() // Navegación exitosa
                                 } else {
                                     errorMessage = "Credenciales incorrectas"
@@ -201,6 +205,24 @@ fun LoginScreen(
             )
         }
     }
+}
+
+fun sha512(cadena:String): String {
+    val bytes = cadena.toByteArray(Charsets.UTF_8)
+    val md = MessageDigest.getInstance("SHA-512")
+    val digest = md.digest(bytes)
+    return digest.fold("") { str, byte -> str + "%02x".format(byte)}
+}
+
+fun base64(encodedString: String): String {
+    var tag = "base64"
+    var encodedString = Base64.encodeToString(encodedString.toByteArray(StandardCharsets.UTF_8), Base64.DEFAULT)
+    //val decodedString = String(decodedBytes, Charsets.UTF_8)
+    Log.i(tag,"Another: N2ZjZjRiYTM5MWM0ODc4NGVkZGU1OTk4ODlkNmUzZjFlNDdhMjdkYjM2ZWNjMDUwY2M5MmYyNTliZmFjMzhhZmFkMmM2OGExYWU4MDRkNzcwNzVlOGZiNzIyNTAzZjNlY2EyYjJjMTAwNmVlNmY2YzdiNzYyOGNiNDVmZmZkMWQ=")
+    Log.i(tag,"Encoded: $encodedString");
+    encodedString = encodedString.replace("\n", "")// Output: Hello, Kotlin!
+    Log.i(tag,"Empty: $encodedString");
+    return encodedString
 }
 
 @Preview(showBackground = true, showSystemUi = true)
